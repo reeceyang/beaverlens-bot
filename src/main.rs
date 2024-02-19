@@ -199,7 +199,7 @@ async fn post_confessions(
         .expect("failed to get channels");
     for channel in channels.iter() {
         let channel_id: u64 = channel.channel_id.parse().unwrap();
-        for post in posts.iter() {
+        for post in posts.iter().rev() {
             let no_number_text = post.post_text.split_once(" ").unwrap().1;
             let message = CreateMessage::new().content(format!(
                 "**#{}** {}\n<{}{}>",
